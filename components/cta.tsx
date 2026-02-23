@@ -1,24 +1,56 @@
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
-import { ArrowRight, Sparkles } from 'lucide-react';
+import { motion } from "framer-motion";
+import { ArrowRight, Sparkles } from "lucide-react";
 
 export default function CTA() {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 60, scale: 0.95 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: {
+        duration: 0.9,
+        ease: [0.16, 1, 0.3, 1], // premium easing
+      },
+    },
+  };
   return (
-    <section className="py-20 bg-gradient-to-r from-black via-orange-600 to-orange-500 relative overflow-hidden">
+    <section className=" flex items-center py-20 bg-gradient-to-r from-black via-orange-600 to-orange-500 relative overflow-hidden">
       {/* Animated background elements */}
       <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 0.2 }}
-        transition={{ duration: 1 }}
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
         className="absolute inset-0 overflow-hidden"
       >
         {[...Array(5)].map((_, i) => (
           <motion.div
             key={i}
             initial={{ x: -100, y: -100, opacity: 0 }}
-            whileInView={{ x: 100 + i * 50, y: 50 + i * 30, opacity: 0.5 }}
-            transition={{ delay: i * 0.2, duration: 2 }}
+            animate={{
+              x: [0, 60, -40, 0],
+              y: [0, -40, 40, 0],
+              opacity: [0.3, 0.5, 0.4, 0.3],
+            }}
+            transition={{
+              duration: 12,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
             className="absolute w-40 h-40 bg-white rounded-full blur-3xl"
             style={{
               left: `${i * 20}%`,
@@ -54,7 +86,8 @@ export default function CTA() {
           transition={{ delay: 0.2, duration: 0.6 }}
           className="text-xl text-white/90 max-w-2xl mx-auto mb-10"
         >
-          Join thousands of successful students who have launched their tech careers with CAT Computer Point. Enroll today and get ₹5,000 off!
+          Join thousands of successful students who have launched their tech
+          careers with CAT Computer Point. Enroll today and get ₹5,000 off!
         </motion.p>
 
         <motion.div
@@ -64,7 +97,10 @@ export default function CTA() {
           className="flex flex-col sm:flex-row gap-4 justify-center items-center"
         >
           <motion.button
-            whileHover={{ scale: 1.05, boxShadow: '0 20px 40px rgba(249, 115, 22, 0.4)' }}
+            whileHover={{
+              scale: 1.05,
+              boxShadow: "0 20px 40px rgba(249, 115, 22, 0.4)",
+            }}
             whileTap={{ scale: 0.95 }}
             className="px-10 py-4 bg-white text-orange-600 rounded-lg font-bold text-lg flex items-center justify-center gap-2 shadow-xl hover:shadow-2xl transition-shadow group"
           >
@@ -91,18 +127,20 @@ export default function CTA() {
           transition={{ delay: 0.4, duration: 0.6 }}
           className="mt-12 flex flex-wrap justify-center gap-6 text-white/80 text-sm"
         >
-          {['✓ 100% Money Back Guarantee', '✓ 24/7 Student Support', '✓ Job Placement Guarantee'].map(
-            (badge, i) => (
-              <motion.span
-                key={i}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.4 + i * 0.1 }}
-              >
-                {badge}
-              </motion.span>
-            )
-          )}
+          {[
+            "✓ 100% Money Back Guarantee",
+            "✓ 24/7 Student Support",
+            "✓ Job Placement Guarantee",
+          ].map((badge, i) => (
+            <motion.span
+              key={i}
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.4 + i * 0.1 }}
+            >
+              {badge}
+            </motion.span>
+          ))}
         </motion.div>
       </div>
     </section>

@@ -17,16 +17,20 @@ export default function Hero() {
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0, y: 60, scale: 0.95 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.8, ease: "easeOut" },
+      scale: 1,
+      transition: {
+        duration: 0.9,
+        ease: [0.16, 1, 0.3, 1], // premium easing
+      },
     },
   };
 
   return (
-    <section className="relative min-h-screen pt-24 bg-black overflow-hidden">
+    <section className=" flex items-center relative  pt-24 bg-black overflow-hidden">
       {/* Background Grid */}
       <div
         className="absolute inset-0 bg-[radial-gradient(#1e293b_1px,transparent_1px)] 
@@ -47,11 +51,18 @@ export default function Hero() {
         <motion.div
           variants={containerVariants}
           initial="hidden"
-          animate="visible"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
           className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center min-h-[calc(100vh-96px)]"
         >
           {/* LEFT CONTENT */}
-          <motion.div variants={itemVariants} className="space-y-8">
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+            className="space-y-8"
+          >
             {/* Badge */}
             <div
               className="inline-flex items-center gap-2 

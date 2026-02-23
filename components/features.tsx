@@ -46,7 +46,7 @@ export default function FeaturesGridPlus() {
   };
 
   return (
-    <section className="relative py-20 bg-black text-white overflow-hidden">
+    <section className=" flex items-center relative py-20 bg-black text-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         {/* Typing animation header */}
         <motion.h2

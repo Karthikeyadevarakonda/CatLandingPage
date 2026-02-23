@@ -65,11 +65,26 @@ export default function StatsFlowPremium() {
   return (
     <section className="relative py-20 sm:py-28 bg-black overflow-hidden">
       {/* Heading */}
-      <div className="text-center mb-14 sm:mb-20 px-6">
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-200 mb-4">
-          Our Impact in Motion
-        </h2>
-        <p className="text-slate-500 text-base sm:text-lg">
+      <div className="flex flex-col items-center text-center mb-14 sm:mb-20 px-6">
+        <div className="flex items-center gap-4 mb-4">
+          <img
+            src="/catlogo.png"
+            alt="CAT Computer Point"
+            className="
+        w-10 h-10
+        sm:w-12 sm:h-12
+        md:w-14 md:h-14
+        lg:w-18 lg:h-18
+        object-contain rounded-xl
+      "
+          />
+
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-200 tracking-tight">
+            Our Impact in Motion
+          </h2>
+        </div>
+
+        <p className="text-slate-500 text-base sm:text-lg max-w-xl">
           Real numbers. Real transformation.
         </p>
       </div>

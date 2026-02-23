@@ -212,9 +212,6 @@ export default function HeroRightAnimation() {
   );
 }
 
-/* ===============================
-   PROFILE BADGE
-================================= */
 function ProfileBadge({
   name,
   job,
