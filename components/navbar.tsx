@@ -54,7 +54,7 @@ export default function Navbar() {
         transition-all duration-500 
         ${
           scrolled
-            ? "bg-black/10 backdrop-blur-xl border border-white/10 shadow-[0_10px_40px_rgba(0,0,0,0.6)]"
+            ? "bg-black/80 sm:bg-black/10  backdrop-blur-xl border border-white/10 shadow-[0_10px_40px_rgba(0,0,0,0.6)]"
             : "bg-transparent"
         } 
         rounded-2xl px-8`}

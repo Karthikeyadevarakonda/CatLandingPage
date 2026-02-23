@@ -11,12 +11,21 @@ export default function StatsFlowPremium() {
     { icon: Zap, label: "Success Rate", target: 98, suffix: "%" },
   ];
 
+  // Detect Mobile
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 640);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+
   // Dynamic Counter Animation
   const [counts, setCounts] = useState(baseStats.map(() => 0));
 
   useEffect(() => {
     baseStats.forEach((stat, index) => {
-      let start = 0;
       const duration = 2000;
       const startTime = Date.now();
 
@@ -54,13 +63,13 @@ export default function StatsFlowPremium() {
   });
 
   return (
-    <section className="relative py-28 bg-black overflow-hidden">
+    <section className="relative py-20 sm:py-28 bg-black overflow-hidden">
       {/* Heading */}
-      <div className="text-center mb-20 px-6">
-        <h2 className="text-4xl md:text-5xl font-bold text-slate-200 mb-4">
+      <div className="text-center mb-14 sm:mb-20 px-6">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-200 mb-4">
           Our Impact in Motion
         </h2>
-        <p className="text-slate-500 text-lg">
+        <p className="text-slate-500 text-base sm:text-lg">
           Real numbers. Real transformation.
         </p>
       </div>
@@ -70,16 +79,16 @@ export default function StatsFlowPremium() {
         <div className="absolute inset-0 backdrop-blur-xl bg-white/[0.03] border-y border-white/10" />
 
         {/* Edge Fade */}
-        <div className="absolute left-0 top-0 w-32 h-full bg-gradient-to-r from-black to-transparent z-10" />
-        <div className="absolute right-0 top-0 w-32 h-full bg-gradient-to-l from-black to-transparent z-10" />
+        <div className="absolute left-0 top-0 w-16 sm:w-32 h-full bg-gradient-to-r from-black to-transparent z-10" />
+        <div className="absolute right-0 top-0 w-16 sm:w-32 h-full bg-gradient-to-l from-black to-transparent z-10" />
 
         <motion.div
           style={{ y: wave }}
-          className="flex gap-28 py-14 whitespace-nowrap"
+          className="flex gap-14 sm:gap-28 py-10 sm:py-14 whitespace-nowrap"
           animate={{ x: ["0%", "-50%"] }}
           transition={{
             repeat: Infinity,
-            duration: 28,
+            duration: isMobile ? 10 : 28, // 🔥 Faster on mobile
             ease: "linear",
           }}
         >
@@ -89,19 +98,17 @@ export default function StatsFlowPremium() {
             return (
               <motion.div
                 key={index}
-                className="flex items-center gap-6 group transition-all duration-300"
+                className="flex items-center gap-4 sm:gap-6 group transition-all duration-300"
                 whileHover={{ scale: 1.05 }}
               >
-                {/* Icon */}
                 <Icon
-                  size={42}
+                  size={isMobile ? 28 : 42}
                   className="text-orange-500/80 group-hover:text-orange-500 transition-colors duration-300"
                 />
 
                 <div>
-                  {/* Animated Number */}
                   <motion.div
-                    className="text-6xl font-extrabold tracking-tight text-slate-200 relative"
+                    className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-slate-200 relative"
                     animate={{
                       textShadow: [
                         "0px 0px 0px rgba(249,115,22,0.0)",
@@ -118,13 +125,11 @@ export default function StatsFlowPremium() {
                     {stat.value}
                   </motion.div>
 
-                  {/* Label */}
-                  <div className="text-slate-500 text-lg group-hover:text-slate-300 transition-colors duration-300">
+                  <div className="text-slate-500 text-sm sm:text-lg group-hover:text-slate-300 transition-colors duration-300">
                     {stat.label}
                   </div>
                 </div>
 
-                {/* Subtle Motion Blur Effect */}
                 <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition duration-500 blur-xl bg-orange-500/5 rounded-full" />
               </motion.div>
             );
