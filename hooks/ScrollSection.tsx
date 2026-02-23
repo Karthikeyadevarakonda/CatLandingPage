@@ -20,13 +20,10 @@ export default function ScrollSection({
   const scale = useTransform(scrollYProgress, [0, 1], [1, 0.9]);
 
   return (
-    <section ref={ref} className="relative lg:h-[150vh]">
+    <section ref={ref} className="h-[150vh] relative">
       <motion.div
         style={{ y, opacity, scale }}
-        className="
-          w-full
-          lg:sticky lg:top-0 lg:h-screen
-        "
+        className="sticky top-0 h-screen w-full"
       >
         {children}
       </motion.div>
