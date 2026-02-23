@@ -28,7 +28,7 @@ export default function CTA() {
     },
   };
   return (
-    <section className=" flex items-center py-20 bg-gradient-to-r from-black via-orange-600 to-orange-500 relative overflow-hidden">
+    <section className="py-16 lg:min-h-screen lg:flex lg:items-center flex items-center bg-gradient-to-r from-black via-orange-600 to-orange-500 relative overflow-hidden">
       {/* Animated background elements */}
       <motion.div
         variants={containerVariants}

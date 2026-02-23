@@ -127,7 +127,7 @@ export default function HeroRightAnimation() {
 
   return (
     <div
-      className="relative w-full h-[550px] flex items-center justify-center 
+      className="relative w-full lg:h-[550px] flex items-center justify-center 
                   bg-gradient-to-b from-black via-[#0b1120] to-black 
                   overflow-hidden perspective-[1400px]"
     >
