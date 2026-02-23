@@ -188,7 +188,7 @@ export default function HeroRightAnimation() {
 
         <motion.div style={{ x: orbit2X, y: orbit2Y }} className="absolute">
           <ProfileBadge
-            name="Lahya"
+            name="stayse"
             job="Placed at Infosys"
             img={
               "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpKlYIQ8XzwrIACoNnoR2Hcdwi62t76TiQlQ&s"
@@ -197,11 +197,7 @@ export default function HeroRightAnimation() {
         </motion.div>
 
         <motion.div style={{ x: orbit3X, y: orbit3Y }} className="absolute">
-          <ProfileBadge
-            name="Madhumitha"
-            job="Placed at Infosys"
-            img={"/lr.png"}
-          />
+          <ProfileBadge name="Gwen" job="Placed at Infosys" img={"/lr.png"} />
         </motion.div>
 
         <motion.div style={{ x: orbit4X, y: orbit4Y }} className="absolute">
